@@ -49,27 +49,19 @@ quizmaster-pro/
 ## Screenshots
 
 ### Home
-
-![Home](screenshots/home.png)
+![Home](assets/screenshots/home.png)
 
 ### Quiz Setup
-
-![Setup](screenshots/setup.png)
+![Setup](assets/screenshots/setup.png)
 
 ### Quiz
-
-![Quiz](screenshots/quiz.png)
+![Quiz](assets/screenshots/quiz.png)
 
 ### Result
-
-![Result](screenshots/result.png)
+![Result](assets/screenshots/result.png)
 
 ### Answer Review
-
-![Review](screenshots/review.png)
-
----
-
+![Review](assets/screenshots/review.png)
 ## Getting Started
 
 Clone the repository
