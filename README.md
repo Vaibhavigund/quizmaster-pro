@@ -26,7 +26,7 @@ QuizMaster Pro is a responsive quiz application built using HTML, CSS, and JavaS
 
 - HTML5
 - CSS3
-- JavaScript (ES6)
+- JavaScript 
 
 ---
 
