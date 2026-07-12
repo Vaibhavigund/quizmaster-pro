@@ -67,7 +67,7 @@ quizmaster-pro/
 Clone the repository
 
 ```bash
-git clone https://github.com/vaibhavigund/quizmaster-pro.git
+git clonehttps://github.com/Vaibhavigund/quizmaster-pro
 ```
 
 Open the project folder and launch `index.html` in your browser.
