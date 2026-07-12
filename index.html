@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A beautiful, modern quiz application">
+    <title>QuizMaster Pro</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="app">
+        <!-- Background Elements -->
+        <div class="bg-gradient"></div>
+        <div class="bg-grid"></div>
+
+        <!-- Welcome Screen -->
+        <div class="screen active" id="welcomeScreen">
+            <div class="container">
+                <div class="welcome-content">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <h1 class="welcome-title">QuizMaster Pro</h1>
+                    <p class="welcome-subtitle">Test your knowledge with our interactive quiz platform</p>
+
+                    <div class="welcome-stats">
+                        <div class="stat">
+                            <div class="stat-value" id="bestScore">0</div>
+                            <div class="stat-label">Best Score</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <div class="stat-value" id="totalQuizzes">0</div>
+                            <div class="stat-label">Quizzes Taken</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" id="startBtn">
+                        <span>Start Quiz</span>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup Screen -->
+        <div class="screen" id="setupScreen">
+            <div class="container container-small">
+                <button class="btn-back" id="backBtn">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+                    </svg>
+                    Back
+                </button>
+
+                <div class="setup-content">
+                    <h2 class="setup-title">Customize Your Quiz</h2>
+                    <p class="setup-description">Choose your preferences to get started</p>
+
+                    <div class="setup-form">
+                        <!-- Category -->
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <div class="options-grid">
+                                <button class="option-btn active" data-category="mixed">
+                                    <span class="option-icon">🎯</span>
+                                    <span class="option-text">Mixed</span>
+                                </button>
+                                <button class="option-btn" data-category="html">
+                                    <span class="option-icon">🌐</span>
+                                    <span class="option-text">HTML</span>
+                                </button>
+                                <button class="option-btn" data-category="css">
+                                    <span class="option-icon">🎨</span>
+                                    <span class="option-text">CSS</span>
+                                </button>
+                                <button class="option-btn" data-category="javascript">
+                                    <span class="option-icon">⚡</span>
+                                    <span class="option-text">JavaScript</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Number of Questions -->
+                        <div class="form-group">
+                            <label class="form-label">Number of Questions</label>
+                            <div class="options-grid options-grid-compact">
+                                <button class="option-btn" data-questions="5">5</button>
+                                <button class="option-btn active" data-questions="10">10</button>
+                                <button class="option-btn" data-questions="15">15</button>
+                                <button class="option-btn" data-questions="20">20</button>
+                            </div>
+                        </div>
+
+                        <!-- Timer -->
+                        <div class="form-group">
+                            <label class="form-label">Time per Question</label>
+                            <div class="options-grid options-grid-compact">
+                                <button class="option-btn" data-timer="15">15s</button>
+                                <button class="option-btn active" data-timer="30">30s</button>
+                                <button class="option-btn" data-timer="60">60s</button>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-large" id="beginBtn">
+                            <span>Begin Quiz</span>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div class="screen" id="quizScreen">
+            <div class="quiz-wrapper">
+                <!-- Quiz Header -->
+                <div class="quiz-header">
+                    <div class="quiz-progress">
+                        <div class="progress-text">
+                            <span class="progress-current" id="currentQ">1</span>
+                            <span class="progress-separator">/</span>
+                            <span class="progress-total" id="totalQ">10</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-timer">
+                        <svg class="timer-ring" viewBox="0 0 36 36">
+                            <circle class="timer-ring-bg" cx="18" cy="18" r="16"></circle>
+                            <circle class="timer-ring-progress" id="timerRing" cx="18" cy="18" r="16"></circle>
+                        </svg>
+                        <span class="timer-text" id="timerText">30</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Content -->
+                <div class="quiz-content">
+                    <div class="question-card">
+                        <h2 class="question-text" id="questionText"></h2>
+                        
+                        <div class="answers-grid" id="answersGrid">
+                            <!-- Options will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Footer -->
+                <div class="quiz-footer">
+                    <button class="btn btn-secondary" id="prevBtn" style="visibility: hidden;">
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+                        </svg>
+                        Previous
+                    </button>
+                    
+                    <button class="btn btn-primary" id="nextBtn" disabled>
+                        Next
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="btn btn-primary" id="submitBtn" style="display: none;">
+                        Submit Quiz
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="screen" id="resultsScreen">
+            <div class="container container-small">
+                <div class="results-content">
+                    <div class="results-header">
+                        <div class="results-icon" id="resultsIcon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h2 class="results-title" id="resultsTitle">Great Job!</h2>
+                        <p class="results-subtitle" id="resultsSubtitle">You've completed the quiz</p>
+                    </div>
+
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <svg viewBox="0 0 120 120">
+                                <circle class="score-circle-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="score-circle-progress" id="scoreCircle" cx="60" cy="60" r="54"></circle>
+                            </svg>
+                            <div class="score-content">
+                                <div class="score-number" id="scoreNumber">0</div>
+                                <div class="score-total">/ <span id="scoreTotal">10</span></div>
+                            </div>
+                        </div>
+                        <div class="score-percentage" id="scorePercentage">0%</div>
+                    </div>
+
+                    <div class="results-stats">
+                        <div class="result-stat">
+                            <div class="result-stat-icon">✓</div>
+                            <div class="result-stat-value" id="correctAnswers">0</div>
+                            <div class="result-stat-label">Correct</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-icon">✗</div>
+                            <div class="result-stat-value" id="wrongAnswers">0</div>
+                            <div class="result-stat-label">Wrong</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-icon">⏱</div>
+                            <div class="result-stat-value" id="timeTaken">0s</div>
+                            <div class="result-stat-label">Time</div>
+                        </div>
+                    </div>
+
+                    <div class="results-actions">
+                        <button class="btn btn-secondary" id="reviewBtn">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Review Answers
+                        </button>
+                        <button class="btn btn-primary" id="retakeBtn">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                            </svg>
+                            Retake Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Screen -->
+        <div class="screen" id="reviewScreen">
+            <div class="container">
+                <button class="btn-back" id="backToResultsBtn">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+                    </svg>
+                    Back to Results
+                </button>
+
+                <div class="review-content">
+                    <h2 class="review-title">Answer Review</h2>
+                    <p class="review-description">Review all questions and answers</p>
+
+                    <div class="review-list" id="reviewList">
+                        <!-- Review items will be inserted here -->
+                    </div>
+
+                    <div class="review-footer">
+                        <button class="btn btn-primary" id="retakeFromReviewBtn">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                            </svg>
+                            Retake Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
